@@ -11,7 +11,7 @@
  * 
  * emoji unicode编码数组：
  * 英文部分：取自开源项目 https://github.com/iamcal/php-emoji
- * 中文部分：工作中发现Bug后增加
+ * 空白部分：工作中发现Bug后增加
  * 
  */
 
@@ -737,7 +737,62 @@ class Emoji {
         "\xf0\x9f\x91\x8c" => 'OK HAND SIGN',
         "\xf0\x9f\x91\x8e" => 'THUMBS DOWN SIGN',
         "\xf0\x9f\x91\x90" => 'OPEN HANDS SIGN',
-        "\xf0\x9f\x98\x88" => '魔鬼'
+        "\xf0\x9f\x98\x88" => '',
+        "\xf0\x9f\x98\x97" => '',
+        "\xf0\x9f\x98\x80" => '',
+        "\xf0\x9f\x98\x9b" => '',
+        "\xf0\x9f\x98\x99" => '',
+        "\xf0\x9f\x98\x8e" => '',
+        "\xf0\x9f\x98\xb4" => '',
+        "\xf0\x9f\x98\xa7" => '',
+        "\xf0\x9f\x98\xa6" => '',
+        "\xf0\x9f\x98\x9f" => '',
+        "\xf0\x9f\x98\xa7" => '',
+        "\xf0\x9f\x98\xa6" => '',
+        "\xf0\x9f\x98\x9f" => '',
+        "\xf0\x9f\x98\xae" => '',
+        "\xf0\x9f\x98\xac" => '',
+        "\xf0\x9f\x98\x90" => '',
+        "\xf0\x9f\x98\x95" => '',
+        "\xf0\x9f\x98\xaf" => '',
+        "\xf0\x9f\x98\xb6" => '',
+        "\xf0\x9f\x98\x87" => '',
+        "\xf0\x9f\x98\x91" => '',
+        "\xf0\x9f\x91\xad" => '',
+        "\xf0\x9f\x91\xac" => '',
+        "\xf0\x9f\x91\xa5" => '',
+        "\xf0\x9f\x92\xad" => '',
+        "\xf0\x9f\x90\x8f" => '',
+        "\xf0\x9f\x90\x84" => '',
+        "\xf0\x9f\x90\x8b" => '',
+        "\xf0\x9f\x90\x90" => '',
+        "\xf0\x9f\x90\x89" => '',
+        "\xf0\x9f\x90\x87" => '',
+        "\xf0\x9f\x90\x85" => '',
+        "\xf0\x9f\x90\x83" => '',
+        "\xf0\x9f\x90\x80" => '',
+        "\xf0\x9f\x90\x82" => '',
+        "\xf0\x9f\x90\x81" => '',
+        "\xf0\x9f\x90\x96" => '',
+        "\xf0\x9f\x90\x95" => '',
+        "\xf0\x9f\x90\x93" => '',
+        "\xf0\x9f\x90\x88" => '',
+        "\xf0\x9f\x90\x86" => '',
+        "\xf0\x9f\x90\xaa" => '',
+        "\xf0\x9f\x90\x8a" => '',
+        "\xf0\x9f\x8c\x90" => '',
+        "\xf0\x9f\x8c\xb3" => '',
+        "\xf0\x9f\x8c\xb2" => '',
+        "\xf0\x9f\x8c\x9e" => '',
+        "\xf0\x9f\x8c\x9d" => '',
+        "\xf0\x9f\x8c\x9a" => '',
+        "\xf0\x9f\x8c\x92" => '',
+        "\xf0\x9f\x8c\x9c" => '',
+        "\xf0\x9f\x8c\x98" => '',
+        "\xf0\x9f\x8c\x97" => '',
+        "\xf0\x9f\x8c\x96" => '',
+        "\xf0\x9f\x8c\x8d" => '',
+        "\xf0\x9f\x8c\x8e" => '',
     );
 
     // 是否包含emoji表情
@@ -756,9 +811,21 @@ class Emoji {
         return str_replace(array_keys($this->emoji_maps), '', $text);
     }
 
-    // 将单个emoji表情输出为字符串(当发现有此类未包含的表情时,可使用该方法输出表情的16进制字符串,然后增加到表情数组中)
-    public function toString( $hex ) {
-        echo strtolower(str_replace('%', '\x', urlencode($hex)));
+    // 将emoji表情输出为字符串(当发现有此类未包含的表情时,可使用该方法输出表情的16进制字符串,然后增加到表情数组中)
+    public function toString( $emoji, $file=false ) {
+        $len = mb_strlen($emoji);
+        $txt = '';
+        for($i=0; $i<$len; $i++){
+            $hex = mb_substr($emoji, $i, 1);
+            $txt .= '"'.strtolower(str_replace('%', '\x', urlencode($hex))).'" => \'\','."\r\n";
+        }
+        echo $txt;
+        // 写入文件 (根目录)
+        if($file){
+            $myfile = fopen($_SERVER['DOCUMENT_ROOT'].'/emoji.txt', 'w') or die('Unable to open file!');
+            fwrite($myfile, $txt);
+            fclose($myfile);
+        }
     }
 
 }
