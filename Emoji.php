@@ -11,7 +11,7 @@
  * 
  * emoji unicode编码数组：
  * 英文部分：取自开源项目 https://github.com/iamcal/php-emoji
- * 中文部分：工作中发现Bug后再增加的
+ * 中文部分：工作中发现Bug后增加
  * 
  */
 
