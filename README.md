@@ -1,8 +1,7 @@
 ﻿## 项目简介
 
 剔除、清除、替换、判断、输出emoji表情的一个php类，对没有使用utf8mb4编码数据库的项目，你懂的，这个少不了。
-
-	请使用 emoji_helper.php, 这个方案更好
+`请使用 emoji_helper.php, 这个方案更好`
 
 ### 提供了以下功能
 
@@ -13,7 +12,7 @@
 ### emoji unicode编码数组来源
 
 	英文部分：取自开源项目 https://github.com/iamcal/php-emoji
-	中文部分：工作中发现Bug后增加
+	空白部分：工作中发现Bug后增加
 
 ### 重要的事情说三遍
 
