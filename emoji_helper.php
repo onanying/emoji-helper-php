@@ -49,7 +49,7 @@ if (!function_exists('emoji_test'))
 
 // 输出emoji表情的16进制字符串
 if (!function_exists('emoji_print'))
-
+{
     public function emoji_print($emoji) 
     {
         $len = mb_strlen($emoji);
