@@ -14,7 +14,8 @@
 if (!function_exists('emoji_reject'))
 {
 
-    function emoji_reject($text) {        
+    function emoji_reject($text) 
+    {        
         $len = mb_strlen($text);
         $new_text = '';
         for ($i = 0; $i < $len; $i++){
@@ -32,7 +33,8 @@ if (!function_exists('emoji_reject'))
 if (!function_exists('emoji_test'))
 {
 
-    function emoji_test($text) {
+    function emoji_test($text) 
+    {
         $len = mb_strlen($text);
         for ($i = 0; $i < $len; $i++) {
             $word = mb_substr($text, $i, 1);
@@ -41,6 +43,22 @@ if (!function_exists('emoji_test'))
             }
         }
         return false;
+    }
+
+}
+
+// 输出emoji表情的16进制字符串
+if (!function_exists('emoji_print'))
+
+    public function emoji_print($emoji) 
+    {
+        $len = mb_strlen($emoji);
+        $txt = '';
+        for($i = 0; $i < $len; $i++){
+            $hex = mb_substr($emoji, $i, 1);
+            $txt .= strtolower(str_replace('%', '\x', urlencode($hex)))."\r\n";
+        }
+        echo $txt;
     }
 
 }
