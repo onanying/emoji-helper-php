@@ -814,7 +814,7 @@ class Emoji
         return str_replace(array_keys($this->emoji_maps), '', $text);
     }
 
-    // 将emoji表情输出为字符串(当发现有此类未包含的表情时,可使用该方法输出表情的16进制字符串,然后增加到表情数组中)
+    // 输出emoji表情的16进制字符串 (当发现有此类未包含的表情时,可使用该方法输出表情的16进制字符串,然后增加到表情数组中)
     public function toString($emoji, $file=false) 
     {
         $len = mb_strlen($emoji);
