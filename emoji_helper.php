@@ -14,17 +14,17 @@
 if (!function_exists('emoji_reject'))
 {
 
-    function emoji_reject($text) {        
-        $len = mb_strlen($text);
-        $new_text = '';
-        for ($i = 0; $i < $len; $i++){
-            $word = mb_substr($text, $i, 1);
-            if(strlen($word) <= 3){
-                $new_text .= $word;
-            }
-        }
-        return $new_text;
-    }
+	function emoji_reject($text) {        
+		$len = mb_strlen($text);
+		$new_text = '';
+		for ($i = 0; $i < $len; $i++){
+			$word = mb_substr($text, $i, 1);
+			if(strlen($word) <= 3){
+				$new_text .= $word;
+			}
+		}
+		return $new_text;
+	}
 
 }
 
@@ -32,15 +32,15 @@ if (!function_exists('emoji_reject'))
 if (!function_exists('emoji_test'))
 {
 
-    function emoji_test($text) {
-        $len = mb_strlen($text);
-        for ($i = 0; $i < $len; $i++) {
-            $word = mb_substr($text, $i, 1);
-            if(strlen($word) > 3){
-                return true;
-            }
-        }
-        return false;
-    }
+	function emoji_test($text) {
+		$len = mb_strlen($text);
+		for ($i = 0; $i < $len; $i++) {
+			$word = mb_substr($text, $i, 1);
+			if(strlen($word) > 3){
+				return true;
+			}
+		}
+		return false;
+	}
 
 }
