@@ -15,7 +15,8 @@
  * 
  */
 
-class Emoji {
+class Emoji 
+{
     protected $emoji_maps = array(
         "\xe2\x98\x80" => 'BLACK SUN WITH RAYS',
         "\xe2\x98\x81" => 'CLOUD',
@@ -796,10 +797,11 @@ class Emoji {
     );
 
     // 是否包含emoji表情
-    public function test( $text ) {
+    public function test($text) 
+    {
         $maps = array_keys($this->emoji_maps);
         foreach ($maps as $value) {
-            if(strpos($text, $value)!==false) {
+            if(strpos($text, $value) !== false) {
                 return true;
             }
         }
@@ -807,15 +809,17 @@ class Emoji {
     }
 
     // 剔除emoji表情
-    public function reject( $text ) {
+    public function reject($text) 
+    {
         return str_replace(array_keys($this->emoji_maps), '', $text);
     }
 
     // 将emoji表情输出为字符串(当发现有此类未包含的表情时,可使用该方法输出表情的16进制字符串,然后增加到表情数组中)
-    public function toString( $emoji, $file=false ) {
+    public function toString($emoji, $file=false) 
+    {
         $len = mb_strlen($emoji);
         $txt = '';
-        for($i=0; $i<$len; $i++){
+        for($i = 0; $i < $len; $i++){
             $hex = mb_substr($emoji, $i, 1);
             $txt .= '"'.strtolower(str_replace('%', '\x', urlencode($hex))).'" => \'\','."\r\n";
         }

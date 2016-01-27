@@ -11,14 +11,15 @@
  */
 
 // 剔除emoji表情
-if ( ! function_exists('emoji_reject')){
+if (!function_exists('emoji_reject'))
+{
 
-    function emoji_reject( $text ) {        
+    function emoji_reject($text) {        
         $len = mb_strlen($text);
         $new_text = '';
-        for($i=0; $i<$len; $i++){
+        for ($i = 0; $i < $len; $i++){
             $word = mb_substr($text, $i, 1);
-            if(strlen($word)<=3){
+            if(strlen($word) <= 3){
                 $new_text .= $word;
             }
         }
@@ -28,13 +29,14 @@ if ( ! function_exists('emoji_reject')){
 }
 
 // 是否包含emoji表情
-if ( ! function_exists('emoji_test')){
+if (!function_exists('emoji_test'))
+{
 
-    function emoji_test( $text ) {
+    function emoji_test($text) {
         $len = mb_strlen($text);
-        for($i=0; $i<$len; $i++){
+        for ($i = 0; $i < $len; $i++) {
             $word = mb_substr($text, $i, 1);
-            if(strlen($word)>3){
+            if(strlen($word) > 3){
                 return true;
             }
         }
