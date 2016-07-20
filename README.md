@@ -16,7 +16,7 @@
 	空白部分：工作中发现Bug后增加
 
 ## 武林秘籍 (javascript版本emoji表情的正则表达式)
-请叫我雷锋！
+能用前台解决的，咱们就别整后台了，请叫我雷锋！
 ```javascript
 var emoji = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g;  // 4字节utf-16 = emoji
 var cont = $("#cont").val();
