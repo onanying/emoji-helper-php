@@ -2,7 +2,7 @@
 
 剔除、判断emoji表情，输出emoji表情的16进制字符串，对没有使用utf8mb4编码数据库的项目，你懂的，这个少不了。
 
-> 请使用 ==emoji_helper.php==, 这个方案更好
+> 请使用 emoji_helper.php, 这个方案更好
 
 ## 提供了以下功能
 
@@ -20,7 +20,7 @@
 ```javascript
 var emoji = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g;  // 4字节utf-16 = emoji
 var cont = $("#cont").val();
-if(emoji.test(cont)){
+if (emoji.test(cont)) {
 	$(".alert-text").text("留言不能包含表情");
 	$(".alert-box").show();
 	return false;
