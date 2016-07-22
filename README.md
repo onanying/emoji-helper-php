@@ -16,13 +16,22 @@
 	空白部分：工作中发现Bug后增加
 
 ## 武林秘籍 (javascript版本emoji表情的正则表达式)
-能用前台解决的，咱们就别整后台了，请叫我雷锋！
+PHP与js的正则不同，是因为js使用的是ucs-2编码
+
+PHP
+```php
+function emoji_test($text)
+{
+	$emoji = "/[\u010000-\u10FFFF]/g";  // 4字节utf-16 = emoji
+	return preg_match($emoji, $text);
+}
+```
+
+JavaScript
 ```javascript
-var emoji = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g;  // 4字节utf-16 = emoji
-var cont = $("#cont").val();
-if (emoji.test(cont)) {
-	$(".alert-text").text("留言不能包含表情");
-	$(".alert-box").show();
-	return false;
+function emoji_test(text)
+{
+	var emoji = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g;  // 4字节utf-16 = emoji
+	return emoji.test(text);
 }
 ```
