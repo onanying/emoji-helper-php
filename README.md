@@ -15,7 +15,7 @@
 	英文部分：取自开源项目 https://github.com/iamcal/php-emoji
 	空白部分：工作中发现Bug后增加
 
-## 武林秘籍 (javascript版本emoji表情的正则表达式)
+## 武林秘籍 (正则表达式)
 PHP与js的正则不同，是因为js使用的是ucs-2编码
 
 PHP
